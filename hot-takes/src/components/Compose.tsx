@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { supabase } from '../lib/supabase';
 import { PenLine } from 'lucide-react';
 
@@ -10,7 +11,7 @@ export function Compose({ user_id, onPostSuccess }: { user_id: string; onPostSuc
     const wordCount = content.trim() ? content.trim().split(/\s+/).length : 0;
     const isOverLimit = wordCount > 100;
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         if (isOverLimit || wordCount === 0) return;
 
